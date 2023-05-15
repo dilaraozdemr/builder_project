@@ -24,7 +24,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             left: 0,
             right: 0,
             child:  Container(
-              color: Color(0xffD2DAFF),
+              color: AppColors.backgroundColor,
             ),
           ),
           Positioned.fill(

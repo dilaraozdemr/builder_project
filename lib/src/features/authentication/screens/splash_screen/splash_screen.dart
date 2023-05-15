@@ -1,5 +1,5 @@
 import 'package:builder_project/src/constants/AssetConstants.dart';
-import 'package:builder_project/src/features/authentication/controllers/splash_screen_cpntroller.dart';
+import 'package:builder_project/src/features/authentication/controllers/splash_screen_controller.dart';
 import 'package:builder_project/src/features/authentication/screens/welcome/WelcomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
