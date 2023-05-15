@@ -1,5 +1,4 @@
 import 'package:builder_project/src/features/authentication/screens/splash_screen/splash_screen.dart';
-import 'package:builder_project/src/features/authentication/screens/welcome/WelcomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

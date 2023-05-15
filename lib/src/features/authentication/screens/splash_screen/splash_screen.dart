@@ -50,7 +50,7 @@ class SplashScreen extends StatelessWidget {
               "BİNALAR",
               style: TextStyle(
                 color: Colors.black,
-                fontFamily: "Playfair",
+                fontFamily: "pass",
                 fontWeight: FontWeight.bold,
                 fontSize: 40,
               ),

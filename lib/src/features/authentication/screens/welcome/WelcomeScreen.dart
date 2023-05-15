@@ -1,5 +1,8 @@
 import 'package:builder_project/src/constants/AssetConstants.dart';
+import 'package:builder_project/src/constants/colors.dart';
+import 'package:builder_project/src/constants/text_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -20,9 +23,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             bottom: 0,
             left: 0,
             right: 0,
-            child: Image.asset(
-              AssetConstant.welcome,
-              fit: BoxFit.fill,
+            child:  Container(
+              color: Color(0xffD2DAFF),
             ),
           ),
           Positioned.fill(
@@ -30,16 +32,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               padding: const EdgeInsets.only(top: 100),
               child: Column(
                 children: [
-                  getWelcomeText("Binalarımız"),
-                  getWelcomeText("Güvenli"),
-                  getWelcomeText("Biz Güvendeyiz"),
-                  SizedBox(
-                    height: 210,
+                  Container(
+                    width: 250,
+                      height: 259,
+                      child: Lottie.asset(AssetConstant.welcomelottie)),
+                  const SizedBox(
+                    height: 120,
                   ),
                   Material(
-                    borderRadius: BorderRadius.circular(25),
                     color: Colors.transparent,
                     child: InkWell(
+                      borderRadius: BorderRadius.circular(25),
                       onTap: () {
                         print("Butona bir kere basıldı");
                       },
@@ -55,8 +58,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           child: Text(
                             "Giriş Yap",
                             style: TextStyle(
-                                color: Colors.black,
-                                fontFamily: "Playfair",
+                                color: AppColors.welcomeTextColor,
+                                fontFamily: "pass",
                                 fontSize: 35,
                                 fontWeight: FontWeight.bold),
                           ),
@@ -64,32 +67,32 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 20,
+                  const SizedBox(
+                    height: 30,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Hesabınız yok mu ?  ",
+                        TextString.tWelcomeString,
                         style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: "PlayFair",
+                            color: AppColors.welcomeTextColor,
+                            fontFamily: "pass",
                             fontSize: 21,
                             fontWeight: FontWeight.w500),
                       ),
                       Text(
                         "Kayıt Olun",
                         style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: "Playfair",
+                            color: AppColors.welcomeTextColor,
+                            fontFamily: "pass",
                             fontWeight: FontWeight.bold,
                             fontSize: 20),
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 30,
+                  const SizedBox(
+                    height: 40,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 20, right: 20),
@@ -98,42 +101,34 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         Container(
                           height: 2,
                           width: 150,
-                          color: Colors.white,
+                          color: AppColors.welcomeTextColor,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 50,
                         ),
                         Container(
                           height: 2,
                           width: 150,
-                          color: Colors.white,
+                          color: AppColors.welcomeTextColor,
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
-                  Material(
+                  InkWell(
                     borderRadius: BorderRadius.circular(15),
-                    color: Colors.transparent,
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(15),
-                      onTap: (){
-                        print("bir kere tıklanıldı");
-                      },
-                      child: Container(
-                        height: 70,
-                        width: 70,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: Colors.white54,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(6.0),
-                          child: Image.asset(
-                            "assets/images/google.png",
-                          ),
+                    onTap: () {
+                      print("bir kere tıklanıldı");
+                    },
+                    child: Container(
+                      height: 70,
+                      width: 70,
+                      child: Padding(
+                        padding: const EdgeInsets.all(6.0),
+                        child: Image.asset(
+                          "assets/images/google.png",
                         ),
                       ),
                     ),
@@ -144,14 +139,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
         ],
       ),
-    );
-  }
-
-  Text getWelcomeText(String text) {
-    return Text(
-      text,
-      style:
-          TextStyle(color: Colors.white, fontFamily: "Playfair", fontSize: 35, fontWeight: FontWeight.bold),
     );
   }
 }
