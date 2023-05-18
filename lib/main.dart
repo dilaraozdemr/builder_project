@@ -1,4 +1,8 @@
+import 'package:builder_project/src/features/authentication/screens/home/home.dart';
+import 'package:builder_project/src/features/authentication/screens/login/login_screen.dart';
+import 'package:builder_project/src/features/authentication/screens/signup/signup.dart';
 import 'package:builder_project/src/features/authentication/screens/splash_screen/splash_screen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home:  SplashScreen(),
+      home:  HomeScreen(),
     );
   }
 }

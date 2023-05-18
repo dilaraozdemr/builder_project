@@ -1,7 +1,9 @@
 import 'package:builder_project/src/constants/AssetConstants.dart';
 import 'package:builder_project/src/constants/colors.dart';
 import 'package:builder_project/src/constants/text_strings.dart';
+import 'package:builder_project/src/features/authentication/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -28,113 +30,95 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             ),
           ),
           Positioned.fill(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 100),
-              child: Column(
-                children: [
-                  Container(
-                    width: 250,
-                      height: 259,
-                      child: Lottie.asset(AssetConstant.welcomelottie)),
-                  const SizedBox(
-                    height: 120,
-                  ),
-                  Material(
-                    color: Colors.transparent,
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(25),
-                      onTap: () {
-                        print("Butona bir kere basıldı");
-                      },
-                      child: Container(
-                        width: 250,
-                        height: 70,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white, width: 2),
-                          borderRadius: BorderRadius.circular(25),
-                          color: Colors.white.withOpacity(0.5),
-                        ),
-                        child: Center(
-                          child: Text(
-                            "Giriş Yap",
-                            style: TextStyle(
-                                color: AppColors.welcomeTextColor,
-                                fontFamily: "pass",
-                                fontSize: 35,
-                                fontWeight: FontWeight.bold),
-                          ),
+            child: Column(
+              children: [
+                Container(
+                  width: 500,
+                    height: 390,
+                    child: Lottie.asset(AssetConstant.welcomelottie)),
+                const SizedBox(
+                  height: 125,
+                ),
+                Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(25),
+                    onTap: () {
+                      Get.to(LoginScreen());
+                      print("Butona bir kere basıldı");
+                    },
+                    child: Container(
+                      width: 250,
+                      height: 70,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.white, width: 2),
+                        borderRadius: BorderRadius.circular(25),
+                        color: Colors.white.withOpacity(0.5),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Giriş Yap",
+                          style: TextStyle(
+                              color: AppColors.welcomeTextColor,
+                              fontFamily: "pass",
+                              fontSize: 35,
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      TextString.tWelcomeString,
+                      style: TextStyle(
+                          color: AppColors.welcomeTextColor,
+                          fontFamily: "pass",
+                          fontSize: 21,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    Text(
+                      "Kayıt Olun",
+                      style: TextStyle(
+                          color: AppColors.welcomeTextColor,
+                          fontFamily: "pass",
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: Row(
                     children: [
-                      Text(
-                        TextString.tWelcomeString,
-                        style: TextStyle(
-                            color: AppColors.welcomeTextColor,
-                            fontFamily: "pass",
-                            fontSize: 21,
-                            fontWeight: FontWeight.w500),
+                      Container(
+                        height: 2,
+                        width: 150,
+                        color: AppColors.welcomeTextColor,
                       ),
-                      Text(
-                        "Kayıt Olun",
-                        style: TextStyle(
-                            color: AppColors.welcomeTextColor,
-                            fontFamily: "pass",
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
+                      const SizedBox(
+                        width: 50,
+                      ),
+                      Container(
+                        height: 2,
+                        width: 150,
+                        color: AppColors.welcomeTextColor,
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20, right: 20),
-                    child: Row(
-                      children: [
-                        Container(
-                          height: 2,
-                          width: 150,
-                          color: AppColors.welcomeTextColor,
-                        ),
-                        const SizedBox(
-                          width: 50,
-                        ),
-                        Container(
-                          height: 2,
-                          width: 150,
-                          color: AppColors.welcomeTextColor,
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  InkWell(
-                    borderRadius: BorderRadius.circular(15),
-                    onTap: () {
-                      print("bir kere tıklanıldı");
-                    },
-                    child: Container(
-                      height: 70,
-                      width: 70,
-                      child: Padding(
-                        padding: const EdgeInsets.all(6.0),
-                        child: Image.asset(
-                          "assets/images/google.png",
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+              ],
             ),
           ),
         ],

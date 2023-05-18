@@ -5,7 +5,6 @@ final String title;
 final String subTitle;
 final String counterText;
 final Color bgColor;
-final double height;
 
 
   OnBoardingModel({
@@ -14,6 +13,5 @@ final double height;
     required this.counterText,
     required this.subTitle,
     required this.title,
-    required this.height,
 });
 }
