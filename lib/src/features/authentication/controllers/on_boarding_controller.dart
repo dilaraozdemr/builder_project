@@ -1,3 +1,4 @@
+import 'package:builder_project/src/features/authentication/screens/home/home.dart';
 import 'package:builder_project/src/features/authentication/screens/welcome/WelcomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -47,7 +48,7 @@ class OnBoardingController extends GetxController {
 
   animateToNextSlide() {
     if(controller.currentPage == 2){
-      Get.to(WelcomeScreen());
+      Get.to(HomeScreen());
     }
     int nextPage =controller.currentPage! + 1;
     controller.animateToPage(page: nextPage!);

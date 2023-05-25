@@ -10,4 +10,6 @@ class AssetConstant{
   static const onboardtasima = "assets/images/on_boarding_images/tasima.png";
   static const onboardtool = "assets/images/on_boarding_images/tool.png";
   static const loginasset = "assets/logo/96953-login.json";
+  static const signassets = "assets/images/build.png";
+  static const passwordresetlottie = "assets/logo/76040-change-passwords.json";
 }

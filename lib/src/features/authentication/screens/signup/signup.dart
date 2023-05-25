@@ -1,4 +1,5 @@
 import 'package:builder_project/src/features/authentication/screens/home/home.dart';
+import 'package:builder_project/src/features/authentication/screens/on_boarding/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -26,7 +27,7 @@ class SignupScreen extends StatelessWidget {
                 child: Image.asset("assets/images/build.png"),
               ),
               Text(
-                "              Şifrenizi güncelleyerek \n             aramıza tekrar katılın ve \nbinalarınızın güvenliğinden emin olun",
+                "                            Kayıt olarak \n                      aramıza katılın ve \nbinalarınızın güvenliğinden emin olun",
                 style: TextStyle(
                   fontFamily: "pass",
                   fontSize: 20,
@@ -34,7 +35,7 @@ class SignupScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: 15,
               ),
               Form(
                 child: Padding(
@@ -79,7 +80,7 @@ class SignupScreen extends StatelessWidget {
                       TextFormField(
                         controller: passwordController,
                         decoration: const InputDecoration(
-                          prefixIcon: Icon(Icons.person,
+                          prefixIcon: Icon(Icons.fingerprint_outlined,
                               color: AppColors.welcomeTextColor),
                           labelText: "Password",
                           labelStyle: TextStyle(
@@ -119,7 +120,7 @@ class SignupScreen extends StatelessWidget {
                         controller: passwordController,
 
                         decoration: const InputDecoration(
-                          prefixIcon: Icon(Icons.person,
+                          prefixIcon: Icon(Icons.fingerprint_outlined,
                               color: AppColors.welcomeTextColor),
                           labelText: "Password",
                           helperText: "Şifrenizi tekrar giriniz",
@@ -161,12 +162,12 @@ class SignupScreen extends StatelessWidget {
                           focusColor: AppColors.welcomeTextColor,
                           borderRadius: BorderRadius.circular(16),
                           onTap: () {
-                            Get.to(HomeScreen());
+                            Get.to(OnBoardingScreen());
                             print("Butona bir kere basıldı");
                           },
                           child: Container(
-                            width: 320,
-                            height: 75,
+                            width: 300,
+                            height: 70,
                             decoration: BoxDecoration(
                               border: Border.all(
                                   width: 2, color: AppColors.welcomeTextColor),

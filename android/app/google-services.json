@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "221560277871",
+    "project_id": "yapikontrol-c6963",
+    "storage_bucket": "yapikontrol-c6963.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:221560277871:android:a04b43ab6039e7a212769a",
+        "android_client_info": {
+          "package_name": "com.example.builder_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvaOH3J9PkpjF7n1i5tuJe8dTpw5BRj4A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

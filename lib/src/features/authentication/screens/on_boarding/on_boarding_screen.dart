@@ -3,6 +3,7 @@ import 'package:builder_project/src/constants/colors.dart';
 import 'package:builder_project/src/constants/text_strings.dart';
 import 'package:builder_project/src/features/authentication/controllers/on_boarding_controller.dart';
 import 'package:builder_project/src/features/authentication/models/model_on_boarding.dart';
+import 'package:builder_project/src/features/authentication/screens/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
@@ -56,7 +57,7 @@ class OnBoardingScreen extends StatelessWidget {
               },
               child: const Text(
                 "Skip",
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(color: AppColors.welcomeTextColor),
               ),
             ),
           ),

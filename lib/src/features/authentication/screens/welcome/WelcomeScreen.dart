@@ -2,6 +2,7 @@ import 'package:builder_project/src/constants/AssetConstants.dart';
 import 'package:builder_project/src/constants/colors.dart';
 import 'package:builder_project/src/constants/text_strings.dart';
 import 'package:builder_project/src/features/authentication/screens/login/login_screen.dart';
+import 'package:builder_project/src/features/authentication/screens/signup/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -82,13 +83,18 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           fontSize: 21,
                           fontWeight: FontWeight.w500),
                     ),
-                    Text(
-                      "Kayıt Olun",
-                      style: TextStyle(
-                          color: AppColors.welcomeTextColor,
-                          fontFamily: "pass",
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
+                    GestureDetector(
+                      onTap: (){
+                        Get.to(SignupScreen());
+                      },
+                      child: Text(
+                        "Kayıt Olun",
+                        style: TextStyle(
+                            color: AppColors.welcomeTextColor,
+                            fontFamily: "pass",
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
+                      ),
                     ),
                   ],
                 ),

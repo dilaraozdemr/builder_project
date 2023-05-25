@@ -29,23 +29,26 @@ class OnBoardingWidget extends StatelessWidget {
               height: size.height*0.4,
             ),
           ),
-          Column(
-            children: [
-              Text(
-                model.title,
-                style: TextStyle(
-                    color: AppColors.welcomeTextColor,
-                    fontFamily: "pass",
-                    fontSize: 20),
-              ),
-              Text(
-                model.subTitle,
-                style: TextStyle(
-                    color: AppColors.welcomeTextColor,
-                    fontFamily: "pass",
-                    fontSize: 15),
-              ),
-            ],
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Text(
+                  model.title,
+                  style: TextStyle(
+                      color: AppColors.welcomeTextColor,
+                      fontFamily: "pass",
+                      fontSize: 20),
+                ),
+                Text(
+                  model.subTitle,
+                  style: TextStyle(
+                      color: AppColors.welcomeTextColor,
+                      fontFamily: "pass",
+                      fontSize: 15),
+                ),
+              ],
+            ),
           ),
           SizedBox(height: 178,),
           Text(
