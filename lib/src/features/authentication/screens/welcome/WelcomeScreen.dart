@@ -26,7 +26,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             bottom: 0,
             left: 0,
             right: 0,
-            child:  Container(
+            child: Container(
               color: AppColors.backgroundColor,
             ),
           ),
@@ -34,7 +34,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             child: Column(
               children: [
                 Container(
-                  width: 500,
+                    width: 500,
                     height: 390,
                     child: Lottie.asset(AssetConstant.welcomelottie)),
                 const SizedBox(
@@ -84,7 +84,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           fontWeight: FontWeight.w500),
                     ),
                     GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         Get.to(SignupScreen());
                       },
                       child: Text(
@@ -102,21 +102,23 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   height: 40,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: Row(
                     children: [
-                      Container(
-                        height: 2,
-                        width: 150,
-                        color: AppColors.welcomeTextColor,
+                      Expanded(
+                        child: Container(
+                          height: 2,
+                          color: AppColors.welcomeTextColor,
+                        ),
                       ),
                       const SizedBox(
                         width: 50,
                       ),
-                      Container(
-                        height: 2,
-                        width: 150,
-                        color: AppColors.welcomeTextColor,
+                      Expanded(
+                        child: Container(
+                          height: 2,
+                          color: AppColors.welcomeTextColor,
+                        ),
                       ),
                     ],
                   ),
