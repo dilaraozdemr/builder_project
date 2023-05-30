@@ -11,5 +11,6 @@ class AssetConstant{
   static const onboardtool = "assets/images/on_boarding_images/tool.png";
   static const loginasset = "assets/logo/96953-login.json";
   static const signassets = "assets/images/build.png";
-  static const passwordresetlottie = "assets/logo/76040-change-passwords.json";
+  static const passwordresetlottie = "assets/logo/128278-reset-password.json";
+  static const otplottie = "assets/logo/117292-otp-verification.json";
 }

@@ -33,12 +33,29 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           Positioned.fill(
             child: Column(
               children: [
+
+                SizedBox(
+                  height: 30,
+                ),
                 Container(
-                    width: 500,
-                    height: 390,
-                    child: Lottie.asset(AssetConstant.welcomelottie)),
+                  width: 350,
+                  height: 350,
+                  child: Image.asset(AssetConstant.signassets),
+                ),
                 const SizedBox(
-                  height: 125,
+                  height: 20,
+                ),
+                Text(
+                  "Yapı Kontrol",
+                  style: TextStyle(
+                    fontFamily: "pass",
+                    fontSize: 45,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.welcomeTextColor,
+                  ),
+                ),
+                const SizedBox(
+                  height: 90,
                 ),
                 Material(
                   color: Colors.transparent,
@@ -49,12 +66,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       print("Butona bir kere basıldı");
                     },
                     child: Container(
-                      width: 250,
+                      width: 300,
                       height: 70,
                       decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(color: Colors.black.withOpacity(0.05), offset: Offset(2,2), blurRadius: 8),
+                        ],
                         border: Border.all(color: Colors.white, width: 2),
                         borderRadius: BorderRadius.circular(25),
-                        color: Colors.white.withOpacity(0.5),
+                        color: Colors.white,
                       ),
                       child: Center(
                         child: Text(
@@ -62,7 +82,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           style: TextStyle(
                               color: AppColors.welcomeTextColor,
                               fontFamily: "pass",
-                              fontSize: 35,
+                              fontSize: 28,
                               fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -97,34 +117,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       ),
                     ),
                   ],
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          height: 2,
-                          color: AppColors.welcomeTextColor,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 50,
-                      ),
-                      Expanded(
-                        child: Container(
-                          height: 2,
-                          color: AppColors.welcomeTextColor,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 30,
                 ),
               ],
             ),

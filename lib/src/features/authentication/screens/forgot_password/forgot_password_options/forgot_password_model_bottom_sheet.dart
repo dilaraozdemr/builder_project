@@ -4,7 +4,8 @@ import 'package:get/get.dart';
 
 import '../../../../../constants/colors.dart';
 import 'BottomSheetWidget.dart';
-class ForgotPasswordScreen{
+
+class ForgotPasswordScreen {
   static GestureDetector buildGestureDetector(BuildContext context, Size size) {
     return GestureDetector(
       onTap: () {
@@ -32,7 +33,7 @@ class ForgotPasswordScreen{
                   ),
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 19,
                 ),
                 Text(
                   "Şifrenizi yenilemek için birini seçiniz.",
@@ -43,27 +44,20 @@ class ForgotPasswordScreen{
                   ),
                 ),
                 const SizedBox(
-                  height: 35,
+                  height: 55,
                 ),
                 BottomSheetWidget(
                   size: size,
                   btnIcon: Icons.mail_outline_rounded,
                   title: "E-mail",
                   subTitle: "E-mail ile değiştirebilirsiniz",
-                  onTap: (){
+                  onTap: () {
                     Navigator.pop(context);
-                    Get.to( ForgotPasswordMailScreen());
+                    Get.to(ForgotPasswordMailScreen());
                   },
                 ),
                 const SizedBox(
                   height: 25,
-                ),
-                BottomSheetWidget(
-                  size: size,
-                  btnIcon: Icons.mobile_friendly_rounded,
-                  title: "Telefon",
-                  subTitle: "Numaranız ile değiştirebilirsiniz",
-                  onTap: (){},
                 ),
               ],
             ),

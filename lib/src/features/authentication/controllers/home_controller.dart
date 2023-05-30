@@ -1,3 +1,4 @@
+import 'package:builder_project/src/features/authentication/screens/home/model/building_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
@@ -8,10 +9,12 @@ class HomeController extends GetxController {
   void deleteBuilding(String id){
      FirebaseFirestore.instance.collection('buildings').doc(id).delete();
   }
-  void addBuilding(String name){
-     name = "Eren";
-     FirebaseFirestore.instance.collection('buildings').add({
-       "buildingName":name,
-     });
+  void addBuilding(BuildingModel model) {
+
+    FirebaseFirestore.instance.collection('buildings').add({
+      "buildingName": model.buildingName,
+      "yas": model.yas,
+      "cimentoMarka": model.cimentoMarka,
+    });
   }
 }

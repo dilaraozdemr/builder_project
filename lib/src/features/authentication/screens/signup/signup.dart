@@ -27,7 +27,23 @@ class SignupScreen extends StatelessWidget {
                 child: Image.asset("assets/images/build.png"),
               ),
               Text(
-                "                            Kayıt olarak \n                      aramıza katılın ve \nbinalarınızın güvenliğinden emin olun",
+                "Kayıt olarak ",
+                style: TextStyle(
+                  fontFamily: "pass",
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                "aramıza katılın ve",
+                style: TextStyle(
+                  fontFamily: "pass",
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                "binalarınızın güvenliğinden emin olun",
                 style: TextStyle(
                   fontFamily: "pass",
                   fontSize: 20,
