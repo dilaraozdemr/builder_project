@@ -1,25 +1,25 @@
-import 'package:builder_project/src/features/authentication/screens/home/home.dart';
-import 'package:builder_project/src/features/authentication/screens/on_boarding/on_boarding_screen.dart';
+import 'package:builder_project/src/features/authentication/controllers/signup_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../constants/colors.dart';
 
-
 class SignupScreen extends StatelessWidget {
-  const SignupScreen({Key? key}) : super(key: key);
+  SignupScreen({Key? key}) : super(key: key);
+
+  final _formKey = GlobalKey<FormState>();
+  final controller = Get.put(SignUpController());
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final emailController = TextEditingController();
-    final passwordController = TextEditingController();
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.only(top: 10.0),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 height: size.height * 0.3,
@@ -50,18 +50,50 @@ class SignupScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(
-                height: 15,
-              ),
               Form(
+                key: _formKey,
                 child: Padding(
                   padding: const EdgeInsets.only(top: 12, left: 20, right: 20),
                   child: Column(
                     children: [
                       TextFormField(
-                        controller: emailController,
+                        controller: controller.fullNameController,
                         decoration: const InputDecoration(
                           prefixIcon: Icon(Icons.person,
+                              color: AppColors.welcomeTextColor),
+                          labelText: "Ad Soyad",
+                          labelStyle: TextStyle(
+                              fontFamily: "pass",
+                              fontSize: 16,
+                              color: Colors.black),
+                          hintTextDirection: TextDirection.ltr,
+                          hintText: "Ad Soyad",
+                          hintStyle: TextStyle(
+                              fontFamily: "pass",
+                              fontSize: 16,
+                              color: Colors.black),
+                          focusColor: AppColors.backgroundColor,
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(18),
+                            ),
+                            borderSide: BorderSide(width: 2),
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10),
+                            ),
+                            borderSide: BorderSide(width: 4),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      TextFormField(
+                        controller: controller.emailController,
+                        decoration: const InputDecoration(
+                          prefixIcon: Icon(Icons.mail_sharp,
                               color: AppColors.welcomeTextColor),
                           labelText: "E-mail",
                           labelStyle: TextStyle(
@@ -87,24 +119,23 @@ class SignupScreen extends StatelessWidget {
                             ),
                             borderSide: BorderSide(width: 4),
                           ),
-
                         ),
                       ),
                       SizedBox(
                         height: 20,
                       ),
                       TextFormField(
-                        controller: passwordController,
+                        controller: controller.phoneNoController,
                         decoration: const InputDecoration(
-                          prefixIcon: Icon(Icons.fingerprint_outlined,
+                          prefixIcon: Icon(Icons.phone_android,
                               color: AppColors.welcomeTextColor),
-                          labelText: "Password",
+                          labelText: "Telefon Numarası",
                           labelStyle: TextStyle(
                               fontFamily: "pass",
                               fontSize: 16,
                               color: Colors.black),
                           hintTextDirection: TextDirection.ltr,
-                          hintText: "Password",
+                          hintText: "Telefon Numarası",
                           hintStyle: TextStyle(
                               fontFamily: "pass",
                               fontSize: 16,
@@ -122,88 +153,158 @@ class SignupScreen extends StatelessWidget {
                             ),
                             borderSide: BorderSide(width: 4),
                           ),
-                          suffixIcon: IconButton(
-                            onPressed: null,
-                            icon: Icon(Icons.remove_red_eye_sharp),
-                          ),
-                          helperText: "En az 4 karakterli",
                         ),
                       ),
                       SizedBox(
                         height: 20,
                       ),
-                      TextFormField(
-                        controller: passwordController,
+                      Obx(
+                        ()=> TextFormField(
+                          controller: controller.passwordController,
+                          obscureText: controller.obsecureText.value,
+                          decoration:  InputDecoration(
+                            prefixIcon: Icon(Icons.fingerprint_outlined,
+                                color: AppColors.welcomeTextColor),
+                            labelText: "Şifre",
 
-                        decoration: const InputDecoration(
-                          prefixIcon: Icon(Icons.fingerprint_outlined,
-                              color: AppColors.welcomeTextColor),
-                          labelText: "Password",
-                          helperText: "Şifrenizi tekrar giriniz",
-                          labelStyle: TextStyle(
-                              fontFamily: "pass",
-                              fontSize: 16,
-                              color: Colors.black),
-                          hintTextDirection: TextDirection.ltr,
-                          hintText: "Password",
-                          hintStyle: TextStyle(
-                              fontFamily: "pass",
-                              fontSize: 16,
-                              color: Colors.black),
-                          focusColor: AppColors.backgroundColor,
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(18),
+                            labelStyle: TextStyle(
+                                fontFamily: "pass",
+                                fontSize: 16,
+                                color: Colors.black),
+                            hintTextDirection: TextDirection.ltr,
+                            hintText: "Şifre",
+                            hintStyle: TextStyle(
+                                fontFamily: "pass",
+                                fontSize: 16,
+                                color: Colors.black),
+                            focusColor: AppColors.backgroundColor,
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(18),
+                              ),
+                              borderSide: BorderSide(width: 2),
                             ),
-                            borderSide: BorderSide(width: 2),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10),
+                              ),
+                              borderSide: BorderSide(width: 4),
                             ),
-                            borderSide: BorderSide(width: 4),
-                          ),
-                          suffixIcon: IconButton(
-                            onPressed: null,
-                            icon: Icon(Icons.remove_red_eye_sharp),
+                            suffixIcon: IconButton(
+                              onPressed: () => controller.obsecureTextStatus(),
+                              icon: Icon(Icons.remove_red_eye_sharp,color: Colors.deepPurple),
+                            ),
+                            helperText: "En az 4 karakterli",
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: 60,
-                      ),
-                      Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          focusColor: AppColors.welcomeTextColor,
-                          borderRadius: BorderRadius.circular(16),
-                          onTap: () {
-                            Get.to(OnBoardingScreen());
-                            print("Butona bir kere basıldı");
-                          },
-                          child: Container(
-                            width: 300,
-                            height: 70,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                  width: 2, color: AppColors.welcomeTextColor),
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            child: Center(
-                              child: Text(
-                                "Kayıt ol",
-                                style: TextStyle(
-                                  color: AppColors.welcomeTextColor,
+                      SizedBox(height: 20,),
+                      Obx(
+                        ()=> Visibility(
+                          visible: controller.isAuditorCheckBoxChecked.value,
+                          child: TextFormField(
+                            controller: controller.auditorController,
+                            obscureText: controller.obsecureText.value,
+                            decoration:  InputDecoration(
+                              prefixIcon: Icon(Icons.personal_injury_outlined,
+                                  color: AppColors.welcomeTextColor),
+                              labelText: "Denetçi",
+
+                              labelStyle: TextStyle(
                                   fontFamily: "pass",
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.w600,
+                                  fontSize: 16,
+                                  color: Colors.black),
+                              hintTextDirection: TextDirection.ltr,
+                              hintText: "Denetçi",
+                              hintStyle: TextStyle(
+                                  fontFamily: "pass",
+                                  fontSize: 16,
+                                  color: Colors.black),
+                              focusColor: AppColors.backgroundColor,
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(18),
                                 ),
+                                borderSide: BorderSide(width: 2),
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
+                                borderSide: BorderSide(width: 4),
+                              ),
+                              suffixIcon: IconButton(
+                                onPressed: () => controller.obsecureTextStatus(),
+                                icon: Icon(Icons.remove_red_eye_sharp,color: Colors.deepPurple),
                               ),
                             ),
                           ),
                         ),
                       ),
+                      Obx(
+                        () => Row(
+                          children: [
+                            Checkbox(
+                              value: controller.isAuditorCheckBoxChecked.value,
+                              onChanged: (value) =>
+                                  controller.changeAuditorStatus(),
+                            ),
+                            Text(
+                              "Denetçiyim",
+                              style: TextStyle(
+                                fontFamily: "pass",
+                                fontSize: 20,
+                                fontWeight: controller.isAuditorCheckBoxChecked.value ? FontWeight.w600 : FontWeight.w100,
+                                color: controller.isAuditorCheckBoxChecked.value ? Colors.deepPurpleAccent : Colors.black,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
                     ],
+                  ),
+                ),
+              ),
+              Flexible(
+                fit: FlexFit.loose,
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    focusColor: AppColors.welcomeTextColor,
+                    borderRadius: BorderRadius.circular(16),
+                    onTap: () {
+                      if (_formKey.currentState!.validate()) {
+                        SignUpController.instance.registerUser(
+                          controller.emailController.text.trim(),
+                          controller.passwordController.text.trim(),
+                          controller.fullNameController.text.trim(),
+                          controller.phoneNoController.text.trim(),
+                          controller.isAuditorCheckBoxChecked.value,
+                          controller.auditorController.text.trim(),
+                        );
+                      }
+                      print("Butona bir kere basıldı");
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                            width: 2, color: AppColors.welcomeTextColor),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 10),
+                        child: Text(
+                          "Kayıt ol",
+                          style: TextStyle(
+                            color: AppColors.welcomeTextColor,
+                            fontFamily: "pass",
+                            fontSize: 24,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),

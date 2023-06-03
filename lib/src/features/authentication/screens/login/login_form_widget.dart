@@ -1,4 +1,6 @@
+import 'package:builder_project/src/features/authentication/controllers/login_controller.dart';
 import 'package:builder_project/src/features/authentication/screens/home/home.dart';
+import 'package:builder_project/src/repository/authentication_repository/authenticaiton_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../constants/colors.dart';
@@ -7,14 +9,11 @@ import '../forgot_password/forgot_password_options/forgot_password_model_bottom_
 import '../on_boarding/on_boarding_screen.dart';
 
 class LoginForm extends StatelessWidget {
-  const LoginForm({
+  LoginForm({
     super.key,
-    required this.emailController,
-    required this.passwordController,
   });
 
-  final TextEditingController emailController;
-  final TextEditingController passwordController;
+  final controller = Get.put(LoginScreenController());
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +24,7 @@ class LoginForm extends StatelessWidget {
         child: Column(
           children: [
             TextFormField(
-              controller: emailController,
+              controller: controller.emailController,
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.person_outline_outlined,
                     color: AppColors.welcomeTextColor),
@@ -56,7 +55,7 @@ class LoginForm extends StatelessWidget {
               height: 20,
             ),
             TextFormField(
-              controller: passwordController,
+              controller: controller.passwordController,
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.fingerprint_outlined,
                     color: AppColors.welcomeTextColor),
@@ -99,7 +98,7 @@ class LoginForm extends StatelessWidget {
                 focusColor: AppColors.welcomeTextColor,
                 borderRadius: BorderRadius.circular(16),
                 onTap: () {
-                  Get.to(HomeScreen());
+                  controller.loginUser(controller.emailController.text.trim(), controller.passwordController.text.trim());
                   print("Butona bir kere basıldı");
                 },
                 child: Container(

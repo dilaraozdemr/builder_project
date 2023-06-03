@@ -1,13 +1,14 @@
 import 'package:builder_project/src/features/authentication/screens/welcome/WelcomeScreen.dart';
+import 'package:builder_project/src/repository/authentication_repository/authenticaiton_repository.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-   Firebase.initializeApp();
-
+   Firebase.initializeApp().then((value) => Get.put(AuthentiacaitonRepository()));
   runApp(const MyApp());
 }
 

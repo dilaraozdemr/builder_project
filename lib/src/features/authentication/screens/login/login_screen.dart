@@ -1,13 +1,13 @@
 import 'package:builder_project/src/constants/AssetConstants.dart';
 import 'package:builder_project/src/constants/colors.dart';
+import 'package:builder_project/src/features/authentication/controllers/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'login_form_widget.dart';
 import 'login_header_widget.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  final controller = LoginScreenController();
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +22,7 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               children: [
                 LoginHeaderWidget(size: size, label: "Tekrar hoş geldiniz", image: AssetConstant.signassets,),
-                LoginForm(
-                    emailController: emailController,
-                    passwordController: passwordController),
+                LoginForm(),
                 SizedBox(
                   height: 20,
                 ),
@@ -35,16 +33,6 @@ class LoginScreen extends StatelessWidget {
                       fontSize: 20,
                       fontFamily: "pass",
                     fontWeight: FontWeight.w600,
-                  ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Container(
-                  width: 60,
-                  height: 60,
-                  child: Image(
-                    image: AssetImage(AssetConstant.googlepng),
                   ),
                 ),
               ],

@@ -105,7 +105,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Get.to(SignupScreen());
+                        Get.to(()=>SignupScreen());
                       },
                       child: Text(
                         "Kayıt Olun",
