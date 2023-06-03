@@ -17,8 +17,8 @@ class LoginHeaderWidget extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: size.height * 0.3,
-          width: size.width * 0.6,
+          height: size.height * 0.35,
+          width: size.width * 0.7,
           child: Image.asset(image),
         ),
         Text(

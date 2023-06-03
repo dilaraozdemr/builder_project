@@ -26,15 +26,7 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                Text(
-                  "OR",
-                  style: TextStyle(
-                      color: AppColors.welcomeTextColor,
-                      fontSize: 20,
-                      fontFamily: "pass",
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
+
               ],
             ),
           ),

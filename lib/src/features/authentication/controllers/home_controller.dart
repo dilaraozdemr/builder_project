@@ -24,6 +24,8 @@ class HomeController extends GetxController {
       "kil": model.kil,
       "celikst": model.celikst,
       "imageUrl" : model.imageUrl,
+      "binaIl" : model.binaIl,
+      "binaAdres": model.binaAdres,
     });
 
 

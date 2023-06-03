@@ -20,5 +20,9 @@ class AssetConstant{
   static const clayIcon = "assets/icons/icons8-clay-60.png";
   static const steelIcon = "assets/icons/icons8-steel-i-beam-100.png";
   static const rebarIcon = "assets/icons/icons8-metallic-rebar-50.png";
-
+  static const adressIcon = "assets/icons/icons8-hotel-location-65.png";
+  static const binIcon= "assets/icons/icons8-bin-96.png";
+  static const provinceIcon = "assets/icons/icons8-country-96.png";
+  static const userLottie= "assets/logo/111659-user-icon.json";
+  static const logoutIcon= "assets/icons/icons8-logout-96.png";
 }

@@ -3,6 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class BuildingModel {
   String? buildingName;
   String? cimentoMarka;
+  String? binaIl;
+  String? binaAdres;
   int? yas;
   int? binaKat;
   String? kil;
@@ -22,6 +24,8 @@ class BuildingModel {
       'kil': kil,
       'celikst': celikst,
       'imageUrl': imageUrl,
+      'binaIl': binaIl,
+      'binaAdres': binaAdres,
     };
   }
 
@@ -33,5 +37,7 @@ class BuildingModel {
         insaatDemiri = doc.data()!["insaatDemiri"],
         kil = doc.data()!["kil"],
         celikst = doc.data()!["celikst"],
-        imageUrl = doc.data()!["imageUrl"];
+        imageUrl = doc.data()!["imageUrl"],
+        binaIl = doc.data()!["binaIl"],
+        binaAdres = doc.data()!["binaAdres"];
 }

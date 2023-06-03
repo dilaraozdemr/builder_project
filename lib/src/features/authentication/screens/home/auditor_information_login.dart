@@ -20,6 +20,8 @@ class AuditorInfLogin extends StatelessWidget {
   final insaatDemiriController = TextEditingController();
   final kilController = TextEditingController();
   final celikstController = TextEditingController();
+  final binaAdresController = TextEditingController();
+  final binaIlController = TextEditingController();
   final controller = Get.put(HomeController());
   final imagecontroller = Get.put(ImageUploadController());
 
@@ -401,8 +403,109 @@ class AuditorInfLogin extends StatelessWidget {
                             ),
                           ),
                         ),
+
                       ],
-                    )
+                    ),
+                    SizedBox(height: 30,),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextFormField(
+                            controller: binaAdresController,
+                            decoration: InputDecoration(
+                              prefixIcon: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Image(
+                                  height: 50,
+                                    width: 50,
+                                    image: AssetImage(AssetConstant.adressIcon)),
+                              ),
+                              labelText: "Bina Adresi",
+                              labelStyle: TextStyle(
+                                  fontFamily: "pass",
+                                  fontSize: 16,
+                                  color: Colors.black),
+                              hintTextDirection: TextDirection.ltr,
+                              hintText: "Bina Adresi",
+                              hintStyle: TextStyle(
+                                  fontFamily: "pass",
+                                  fontSize: 16,
+                                  color: Colors.black),
+                              focusColor: AppColors.backgroundColor,
+                              enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      width: 1,
+                                      color: AppColors.welcomeTextColor
+                                          .withOpacity(0.7))),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(18),
+                                ),
+                                borderSide: BorderSide(width: 2),
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
+                                borderSide: BorderSide(
+                                  width: 4,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 30,),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextFormField(
+                            controller: binaIlController,
+                            decoration: InputDecoration(
+                              prefixIcon: Padding(
+                                padding: const EdgeInsets.all(6.0),
+                                child: Image(
+                                  height: 50,
+                                    width: 50,
+                                    image: AssetImage(AssetConstant.provinceIcon)),
+                              ),
+                              labelText: "Bina İl",
+                              labelStyle: TextStyle(
+                                  fontFamily: "pass",
+                                  fontSize: 16,
+                                  color: Colors.black),
+                              hintTextDirection: TextDirection.ltr,
+                              hintText: "Bina İl",
+                              hintStyle: TextStyle(
+                                  fontFamily: "pass",
+                                  fontSize: 16,
+                                  color: Colors.black),
+                              focusColor: AppColors.backgroundColor,
+                              enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      width: 1,
+                                      color: AppColors.welcomeTextColor
+                                          .withOpacity(0.7))),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(18),
+                                ),
+                                borderSide: BorderSide(width: 2),
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
+                                borderSide: BorderSide(
+                                  width: 4,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -484,46 +587,51 @@ class AuditorInfLogin extends StatelessWidget {
               SizedBox(
                 height: 30,
               ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Material(
-                      color: AppColors.welcomeTextColor,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(25),
-                      ),
-                      child: InkWell(
-                        onTap: () async {
-                          model.buildingName = buildingNameController.text;
-                          model.yas = int.parse(yasController.text);
-                          model.cimentoMarka = cimentoMarkaController.text;
-                          model.celikst = celikstController.text;
-                          model.binaKat = int.parse(binaKatController.text);
-                          model.insaatDemiri = insaatDemiriController.text;
-                          model.kil = kilController.text;
-                          final response = await imagecontroller
-                              .uploadImage(imagecontroller.imagePath.value);
-                          model.imageUrl = response;
-                          controller.addBuilding(model);
-                          imagecontroller.imagePath.value = "";
-                          Get.to(() => HomeScreen());
-                        },
-                        child: Container(
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 20.0),
-                            child: Text(
-                              "Kaydet",
-                              style: TextStyle(
-                                  color: AppColors.backgroundColor,
-                                  fontSize: 20),
-                              textAlign: TextAlign.center,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Material(
+                        color: AppColors.welcomeTextColor,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(25),
+                        ),
+                        child: InkWell(
+                          onTap: () async {
+                            model.buildingName = buildingNameController.text;
+                            model.yas = int.parse(yasController.text);
+                            model.cimentoMarka = cimentoMarkaController.text;
+                            model.celikst = celikstController.text;
+                            model.binaKat = int.parse(binaKatController.text);
+                            model.insaatDemiri = insaatDemiriController.text;
+                            model.kil = kilController.text;
+                            model.binaAdres= binaAdresController.text;
+                            model.binaIl = binaIlController.text;
+                            final response = await imagecontroller
+                                .uploadImage(imagecontroller.imagePath.value);
+                            model.imageUrl = response;
+                            controller.addBuilding(model);
+                            imagecontroller.imagePath.value = "";
+                            Get.to(() => HomeScreen());
+                          },
+                          child: Container(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 20.0),
+                              child: Text(
+                                "Kaydet",
+                                style: TextStyle(
+                                    color: AppColors.backgroundColor,
+                                    fontSize: 20),
+                                textAlign: TextAlign.center,
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
