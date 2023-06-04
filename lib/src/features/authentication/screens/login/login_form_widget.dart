@@ -1,12 +1,8 @@
-import 'package:builder_project/src/features/authentication/controllers/login_controller.dart';
-import 'package:builder_project/src/features/authentication/screens/home/home.dart';
-import 'package:builder_project/src/repository/authentication_repository/authenticaiton_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../constants/colors.dart';
-import '../forgot_password/forgot_password_options/BottomSheetWidget.dart';
+import '../../controllers/login_controller.dart';
 import '../forgot_password/forgot_password_options/forgot_password_model_bottom_sheet.dart';
-import '../on_boarding/on_boarding_screen.dart';
 
 class LoginForm extends StatelessWidget {
   LoginForm({
@@ -54,35 +50,38 @@ class LoginForm extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            TextFormField(
-              controller: controller.passwordController,
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.fingerprint_outlined,
-                    color: AppColors.welcomeTextColor),
-                labelText: "Password",
-                labelStyle: TextStyle(
-                    fontFamily: "pass", fontSize: 16, color: Colors.black),
-                hintTextDirection: TextDirection.ltr,
-                hintText: "Password",
-                hintStyle: TextStyle(
-                    fontFamily: "pass", fontSize: 16, color: Colors.black),
-                focusColor: AppColors.backgroundColor,
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(18),
-                  ),
-                  borderSide: BorderSide(width: 2),
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(10),
-                  ),
-                  borderSide: BorderSide(width: 4),
-                ),
-                suffixIcon: IconButton(
-                  onPressed: null,
-                  icon: Icon(Icons.remove_red_eye_sharp),
-                ),
+            Obx(
+              () => TextFormField(
+                controller: controller.passwordController,
+                obscureText: controller.obsecureText.value,
+                decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.fingerprint_outlined,
+                        color: AppColors.welcomeTextColor),
+                    labelText: "Password",
+                    labelStyle: TextStyle(
+                        fontFamily: "pass", fontSize: 16, color: Colors.black),
+                    hintTextDirection: TextDirection.ltr,
+                    hintText: "Password",
+                    hintStyle: TextStyle(
+                        fontFamily: "pass", fontSize: 16, color: Colors.black),
+                    focusColor: AppColors.backgroundColor,
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(18),
+                      ),
+                      borderSide: BorderSide(width: 2),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                      borderSide: BorderSide(width: 4),
+                    ),
+                    suffixIcon: IconButton(
+                      onPressed: () => controller.obsecureTextStatus(),
+                      icon: Icon(Icons.remove_red_eye_sharp,
+                          color: Colors.deepPurple),
+                    )),
               ),
             ),
             const SizedBox(
@@ -98,7 +97,8 @@ class LoginForm extends StatelessWidget {
                 focusColor: AppColors.welcomeTextColor,
                 borderRadius: BorderRadius.circular(16),
                 onTap: () {
-                  controller.loginUser(controller.emailController.text.trim(), controller.passwordController.text.trim());
+                  controller.loginUser(controller.emailController.text.trim(),
+                      controller.passwordController.text.trim());
                   print("Butona bir kere basıldı");
                 },
                 child: Container(
@@ -129,5 +129,3 @@ class LoginForm extends StatelessWidget {
     );
   }
 }
-
-

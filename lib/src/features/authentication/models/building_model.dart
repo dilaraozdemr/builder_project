@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class BuildingModel {
+  String? userId;
   String? buildingName;
   String? cimentoMarka;
   String? binaIl;
@@ -16,6 +17,7 @@ class BuildingModel {
 
   Map<String, dynamic> toMap() {
     return {
+      "userId" : userId,
       'buildingName': buildingName,
       'cimentoMarka': cimentoMarka,
       'yas': yas,
@@ -30,7 +32,8 @@ class BuildingModel {
   }
 
   BuildingModel.fromDocumentSnapshot(DocumentSnapshot<Map<String, dynamic>> doc)
-      : buildingName = doc.data()!["buildingName"],
+      : userId = doc.data()!["userId"],
+        buildingName = doc.data()!["buildingName"],
         cimentoMarka = doc.data()!["cimentoMarka"],
         yas = doc.data()!["yas"],
         binaKat = doc.data()!["binaKat"],

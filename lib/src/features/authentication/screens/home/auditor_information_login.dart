@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:builder_project/src/constants/AssetConstants.dart';
 import 'package:builder_project/src/features/authentication/controllers/home_controller.dart';
 import 'package:builder_project/src/features/authentication/controllers/upload_image_controller.dart';
+import 'package:builder_project/src/features/authentication/models/user_model.dart';
 import 'package:builder_project/src/features/authentication/screens/home/home.dart';
 import 'package:builder_project/src/features/authentication/models/building_model.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,12 @@ import 'package:image_picker/image_picker.dart';
 import '../../../../constants/colors.dart';
 
 class AuditorInfLogin extends StatelessWidget {
-  AuditorInfLogin({Key? key}) : super(key: key);
+  final UserModel userModel;
+
+  AuditorInfLogin({
+    Key? key,
+    required this.userModel,
+  }) : super(key: key);
   final buildingNameController = TextEditingController();
   final yasController = TextEditingController();
   final cimentoMarkaController = TextEditingController();
@@ -30,6 +36,17 @@ class AuditorInfLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: AppColors.welcomeTextColor,
+        title: Text(
+          "Bina Ekle",
+          style: TextStyle(
+            color: AppColors.backgroundColor,
+            fontSize: 25,
+          ),
+        ),
+      ),
       backgroundColor: AppColors.backgroundColor,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0),
@@ -403,10 +420,11 @@ class AuditorInfLogin extends StatelessWidget {
                             ),
                           ),
                         ),
-
                       ],
                     ),
-                    SizedBox(height: 30,),
+                    SizedBox(
+                      height: 30,
+                    ),
                     Row(
                       children: [
                         Expanded(
@@ -416,9 +434,10 @@ class AuditorInfLogin extends StatelessWidget {
                               prefixIcon: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Image(
-                                  height: 50,
+                                    height: 50,
                                     width: 50,
-                                    image: AssetImage(AssetConstant.adressIcon)),
+                                    image:
+                                        AssetImage(AssetConstant.adressIcon)),
                               ),
                               labelText: "Bina Adresi",
                               labelStyle: TextStyle(
@@ -456,7 +475,9 @@ class AuditorInfLogin extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 30,),
+                    SizedBox(
+                      height: 30,
+                    ),
                     Row(
                       children: [
                         Expanded(
@@ -466,9 +487,10 @@ class AuditorInfLogin extends StatelessWidget {
                               prefixIcon: Padding(
                                 padding: const EdgeInsets.all(6.0),
                                 child: Image(
-                                  height: 50,
+                                    height: 50,
                                     width: 50,
-                                    image: AssetImage(AssetConstant.provinceIcon)),
+                                    image:
+                                        AssetImage(AssetConstant.provinceIcon)),
                               ),
                               labelText: "Bina İl",
                               labelStyle: TextStyle(
@@ -599,6 +621,7 @@ class AuditorInfLogin extends StatelessWidget {
                         ),
                         child: InkWell(
                           onTap: () async {
+                            model.userId = userModel.id ?? "";
                             model.buildingName = buildingNameController.text;
                             model.yas = int.parse(yasController.text);
                             model.cimentoMarka = cimentoMarkaController.text;
@@ -606,18 +629,21 @@ class AuditorInfLogin extends StatelessWidget {
                             model.binaKat = int.parse(binaKatController.text);
                             model.insaatDemiri = insaatDemiriController.text;
                             model.kil = kilController.text;
-                            model.binaAdres= binaAdresController.text;
+                            model.binaAdres = binaAdresController.text;
                             model.binaIl = binaIlController.text;
                             final response = await imagecontroller
                                 .uploadImage(imagecontroller.imagePath.value);
                             model.imageUrl = response;
                             controller.addBuilding(model);
                             imagecontroller.imagePath.value = "";
-                            Get.to(() => HomeScreen());
+                            Get.to(() => HomeScreen(
+                                  userModel: userModel,
+                                ));
                           },
                           child: Container(
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 20.0),
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 20.0),
                               child: Text(
                                 "Kaydet",
                                 style: TextStyle(

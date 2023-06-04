@@ -2,6 +2,7 @@ import 'package:builder_project/src/constants/AssetConstants.dart';
 import 'package:builder_project/src/constants/colors.dart';
 import 'package:builder_project/src/features/authentication/controllers/home_controller.dart';
 import 'package:builder_project/src/features/authentication/controllers/login_controller.dart';
+import 'package:builder_project/src/features/authentication/models/user_model.dart';
 import 'package:builder_project/src/features/authentication/screens/building_detail/building_detail.dart';
 import 'package:builder_project/src/features/authentication/screens/home/auditor_information_login.dart';
 import 'package:builder_project/src/features/authentication/models/building_model.dart';
@@ -13,7 +14,8 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 class HomeScreen extends StatelessWidget {
-  HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key, this.userModel}) : super(key: key);
+  final UserModel? userModel;
   final controller = Get.put(HomeController());
   final loginController = Get.put(LoginScreenController());
 
@@ -32,43 +34,39 @@ class HomeScreen extends StatelessWidget {
               children: [
                 Expanded(
                   child: GestureDetector(
-                    onTap: () => Get.to(AuditorInfLogin()),
+                    onTap: () => Get.to(AuditorInfLogin(userModel: userModel!,)),
                     child: Material(
                       color: AppColors.backgroundColor,
                       borderRadius: BorderRadius.circular(25),
-                      child: InkWell(
-                        onTap: () {},
-                        borderRadius: BorderRadius.circular(25),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: AppColors.welcomeTextColor,
-                              width: 2,
-                            ),
-                            borderRadius: BorderRadius.circular(25),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: AppColors.welcomeTextColor,
+                            width: 2,
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.add,
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.add,
+                                color: AppColors.welcomeTextColor,
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                "Bina Ekle",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontFamily: "pass",
                                   color: AppColors.welcomeTextColor,
                                 ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text(
-                                  "Bina Ekle",
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontFamily: "pass",
-                                    color: AppColors.welcomeTextColor,
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -85,7 +83,7 @@ class HomeScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(100),
                     child: InkWell(
                       borderRadius: BorderRadius.circular(100),
-                      onTap: () => Get.to(() => ProfileScreen()),
+                      onTap: () => Get.to(() => ProfileScreen(userModel: userModel!,)),
                       child: Container(
                         width: 50,
                         height: 50,
@@ -103,7 +101,7 @@ class HomeScreen extends StatelessWidget {
           Expanded(
             child: Container(
               child: StreamBuilder<QuerySnapshot>(
-                stream: controller.getBuildings(),
+                stream: controller.getBuildings(userModel?.id ??""),
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (snapshot.hasError) {
@@ -129,81 +127,84 @@ class HomeScreen extends StatelessWidget {
                             Get.to(() =>
                                 BuildingDetailScreen(model: buildingModel));
                           },
-                          child: Card(
-                            color: Color(0xffFFFAF4),
-                            shadowColor: AppColors.welcomeTextColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(15.0),
-                              child: Row(
-                                children: [
-                                  GestureDetector(
-                                    onTap: () =>
-                                        controller.deleteBuilding(docId),
-                                    child: Container(
-                                      height: 60,
-                                      width: 60,
-                                      child: Image(
-                                        image: AssetImage(
-                                          AssetConstant.binIcon,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: Card(
+                              color: Color(0xffFFFAF4),
+                              shadowColor: AppColors.welcomeTextColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(15.0),
+                                child: Row(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () =>
+                                          controller.deleteBuilding(docId),
+                                      child: Container(
+                                        height: 60,
+                                        width: 60,
+                                        child: Image(
+                                          image: AssetImage(
+                                            AssetConstant.binIcon,
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  SizedBox(width: 10),
-                                  Column(
-                                    children: [
-                                      Container(
-                                        width: 90,
-                                        child: Text(
-                                          buildingModel.buildingName ?? "",
-                                          style: TextStyle(
-                                            fontFamily: "pass",
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w600,
-                                            color: AppColors.welcomeTextColor,
+                                    SizedBox(width: 10),
+                                    Column(
+                                      children: [
+                                        Container(
+                                          width: 70,
+                                          child: Text(
+                                            buildingModel.buildingName ?? "",
+                                            style: TextStyle(
+                                              fontFamily: "pass",
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w600,
+                                              color: AppColors.welcomeTextColor,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      Container(
-                                        width: 90,
-                                        child: Text(
-                                          "Bina İl: ${buildingModel.binaIl ?? ""}",
-                                          style: TextStyle(
-                                            fontFamily: "pass",
-                                            fontSize: 13,
-                                            color: AppColors.welcomeTextColor,
+                                        Container(
+                                          width: 70,
+                                          child: Text(
+                                            "Bina İl: ${buildingModel.binaIl ?? ""}",
+                                            style: TextStyle(
+                                              fontFamily: "pass",
+                                              fontSize: 13,
+                                              color: AppColors.welcomeTextColor,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      Container(
-                                        width: 90,
-                                        child: Text(
-                                          "Bina Yaşı: ${buildingModel.yas ?? ""}",
-                                          style: TextStyle(
-                                            fontFamily: "pass",
-                                            fontSize: 13,
-                                            color: AppColors.welcomeTextColor,
+                                        Container(
+                                          width: 70,
+                                          child: Text(
+                                            "Bina Yaşı: ${buildingModel.yas ?? ""}",
+                                            style: TextStyle(
+                                              fontFamily: "pass",
+                                              fontSize: 13,
+                                              color: AppColors.welcomeTextColor,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    width: 120,
-                                  ),
-                                  CachedNetworkImage(
-                                    width: 70,
-                                    height: 70,
-                                    imageUrl: buildingModel.imageUrl ?? "",
-                                    placeholder: (context, url) =>
-                                        CircularProgressIndicator(),
-                                    errorWidget: (context, url, error) =>
-                                        Icon(Icons.error),
-                                  ),
-                                ],
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      width: 120,
+                                    ),
+                                    CachedNetworkImage(
+                                      width: 70,
+                                      height: 70,
+                                      imageUrl: buildingModel.imageUrl ?? "",
+                                      placeholder: (context, url) =>
+                                          CircularProgressIndicator(),
+                                      errorWidget: (context, url, error) =>
+                                          Icon(Icons.error),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),

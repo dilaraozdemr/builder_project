@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:builder_project/src/features/authentication/models/user_model.dart';
 import 'package:builder_project/src/features/authentication/screens/home/home.dart';
+import 'package:builder_project/src/features/authentication/screens/home/home_user.dart';
 import 'package:builder_project/src/features/authentication/screens/welcome/WelcomeScreen.dart';
 import 'package:builder_project/src/repository/authentication_repository/exceptions/signup_email_password_failure.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -10,7 +11,7 @@ import 'package:get/get.dart';
 
 class AuthentiacaitonRepository extends GetxController {
   static AuthentiacaitonRepository get instance => Get.find();
-
+  Rx<UserModel> userModel = UserModel().obs;
   final _auth = FirebaseAuth.instance;
   late final Rx<User?> firebaseUser;
 
@@ -21,10 +22,19 @@ class AuthentiacaitonRepository extends GetxController {
     ever(firebaseUser, _setInitialScreen);
   }
 
-  _setInitialScreen(User? user) {
-    user == null
-        ? Get.offAll(() => const WelcomeScreen())
-        : Get.offAll(() => HomeScreen());
+  _setInitialScreen(User? user) async {
+    if(user !=null){
+      await getCurrentUser(user.uid);
+      if(userModel.value.isAuditor ??false){
+        Get.to(HomeScreen(userModel: userModel.value,));
+      }
+      else{
+        Get.to(HomeUser(userModel: userModel.value,));
+      }
+    }
+    else{
+      Get.offAll(() => const WelcomeScreen());
+    }
   }
 
   Future<void> createUserWithEmailAndPassword(String email, String password,
@@ -33,7 +43,6 @@ class AuthentiacaitonRepository extends GetxController {
       final response =
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-
       UserModel model = UserModel();
       model.phoneNo = phoneNo;
       model.fullName=fullName;
@@ -43,6 +52,17 @@ class AuthentiacaitonRepository extends GetxController {
       model.id = response.user?.uid ?? "";
       createUserToDb(model);
       await getCurrentUser(response.user!.uid);
+      if(firebaseUser.value!=null){
+        if(userModel.value.isAuditor ?? false){
+          Get.to(HomeScreen(userModel: userModel.value,));
+        }
+        else{
+          Get.to(HomeUser(userModel: userModel.value,));
+        }
+      }
+      else{
+        Get.to(WelcomeScreen());
+      }
     } on FirebaseAuthException catch (e) {
 
     } catch (_) {}
@@ -54,8 +74,17 @@ class AuthentiacaitonRepository extends GetxController {
       final response = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
      await getCurrentUser(response.user!.uid);
-      firebaseUser.value != null ? Get.offAll(() => HomeScreen()) : Get.to(() =>
-          WelcomeScreen());
+     if(firebaseUser.value!=null){
+       if(userModel.value.isAuditor ?? false){
+         Get.to(HomeScreen(userModel: userModel.value,));
+       }
+       else{
+         Get.to(HomeUser(userModel:userModel.value,));
+       }
+     }
+     else{
+       Get.to(WelcomeScreen());
+     }
     } on FirebaseAuthException catch (e) {
       final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
       print('FIREBASE AUTH EXCEPTION - ${ex.message}');
@@ -83,6 +112,7 @@ class AuthentiacaitonRepository extends GetxController {
   Future<UserModel> getCurrentUser(String id) async {
     var response = await FirebaseFirestore.instance.collection('users').doc(id).get();
     var user = UserModel.fromDocumentSnapshot(response);
+    userModel.value = user;
     if(user.isAuditor ??false){
       Get.snackbar(snackPosition: SnackPosition.BOTTOM,"Hoşgeldiniz Denetçi","${user.fullName}\nDenetçi ID:${user.auditorId}" ,);
     }

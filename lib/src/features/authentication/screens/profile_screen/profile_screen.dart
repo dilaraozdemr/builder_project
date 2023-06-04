@@ -9,9 +9,9 @@ import 'package:lottie/lottie.dart';
 
 class ProfileScreen extends StatelessWidget {
   final loginController = Get.put(LoginScreenController());
-  final userModel = UserModel();
+  final UserModel userModel;
 
-  ProfileScreen({Key? key}) : super(key: key);
+  ProfileScreen({Key? key, required this.userModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

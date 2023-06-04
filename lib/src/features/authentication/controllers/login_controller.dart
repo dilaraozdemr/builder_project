@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../../../repository/authentication_repository/authenticaiton_repository.dart';
 
 class LoginScreenController extends GetxController{
+  RxBool obsecureText = true.obs;
   static LoginScreenController get instance => Get.find();
 
   final emailController = TextEditingController();
@@ -13,6 +14,9 @@ class LoginScreenController extends GetxController{
   }
   void logoutUser () async{
     await AuthentiacaitonRepository.instance.logout();
+  }
+  void obsecureTextStatus(){
+    obsecureText.value = !obsecureText.value;
   }
 
 }
