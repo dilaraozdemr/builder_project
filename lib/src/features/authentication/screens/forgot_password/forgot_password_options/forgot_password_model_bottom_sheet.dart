@@ -65,16 +65,7 @@ class ForgotPasswordScreen {
         );
         print("şifremi unuttum basıldı.");
       },
-      child: Padding(
-        padding: const EdgeInsets.only(left: 170),
-        child: Text(
-          "Şifremi unuttum?",
-          style: TextStyle(
-              fontSize: 18,
-              color: AppColors.welcomeTextColor,
-              fontFamily: "pass"),
-        ),
-      ),
+      child: Container(),
     );
   }
 }
