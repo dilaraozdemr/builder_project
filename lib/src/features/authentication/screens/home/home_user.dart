@@ -1,7 +1,6 @@
 import 'package:builder_project/src/constants/AssetConstants.dart';
 import 'package:builder_project/src/constants/colors.dart';
 import 'package:builder_project/src/features/authentication/controllers/home_controller.dart';
-import 'package:builder_project/src/features/authentication/controllers/login_controller.dart';
 import 'package:builder_project/src/features/authentication/models/user_model.dart';
 import 'package:builder_project/src/features/authentication/screens/building_detail/building_detail.dart';
 import 'package:builder_project/src/features/authentication/screens/home/auditor_information_login.dart';
@@ -23,9 +22,7 @@ class HomeUser extends StatefulWidget {
 
 class _HomeUserState extends State<HomeUser> {
   final controller = Get.put(HomeController());
-
-  final loginController = Get.put(LoginScreenController());
-var query = "";
+  var query = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,9 +65,7 @@ var query = "";
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: 150,
-                ),
+                Spacer(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Material(
@@ -135,19 +130,6 @@ var query = "";
                                   padding: const EdgeInsets.all(15.0),
                                   child: Row(
                                     children: [
-                                      GestureDetector(
-                                        onTap: () =>
-                                            controller.deleteBuilding(docId),
-                                        child: Container(
-                                          height: 60,
-                                          width: 60,
-                                          child: Image(
-                                            image: AssetImage(
-                                              AssetConstant.binIcon,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
                                       SizedBox(width: 10),
                                       Column(
                                         children: [
@@ -187,9 +169,7 @@ var query = "";
                                           ),
                                         ],
                                       ),
-                                      SizedBox(
-                                        width: 120,
-                                      ),
+                                      Spacer(),
                                       CachedNetworkImage(
                                         width: 70,
                                         height: 70,

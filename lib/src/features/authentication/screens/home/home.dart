@@ -73,9 +73,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: 150,
-                ),
+                Spacer(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Material(
@@ -191,9 +189,7 @@ class HomeScreen extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    SizedBox(
-                                      width: 120,
-                                    ),
+                                   Spacer(),
                                     CachedNetworkImage(
                                       width: 70,
                                       height: 70,
