@@ -1,3 +1,5 @@
+import 'package:builder_project/src/features/authentication/screens/on_boarding/on_boarding_screen.dart';
+import 'package:builder_project/src/features/authentication/screens/splash_screen/splash_screen.dart';
 import 'package:builder_project/src/features/authentication/screens/welcome/WelcomeScreen.dart';
 import 'package:builder_project/src/repository/authentication_repository/authenticaiton_repository.dart';
 import 'package:firebase_core/firebase_core.dart';

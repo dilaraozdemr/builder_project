@@ -4,6 +4,7 @@ import 'package:builder_project/src/constants/AssetConstants.dart';
 import 'package:builder_project/src/features/authentication/controllers/home_controller.dart';
 import 'package:builder_project/src/features/authentication/controllers/upload_image_controller.dart';
 import 'package:builder_project/src/features/authentication/models/user_model.dart';
+import 'package:builder_project/src/features/authentication/screens/home/add_building_controller.dart';
 import 'package:builder_project/src/features/authentication/screens/home/home.dart';
 import 'package:builder_project/src/features/authentication/models/building_model.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,7 @@ class AuditorInfLogin extends StatelessWidget {
   final imagecontroller = Get.put(ImageUploadController());
 
   var model = BuildingModel();
-
+  var addBuildingController = Get.put(AddBuildingController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -528,11 +529,32 @@ class AuditorInfLogin extends StatelessWidget {
                         ),
                       ],
                     ),
+                    Obx(
+                          () => Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Checkbox(
+                            value: addBuildingController.isDurableCheckBoxChecked.value,
+                            onChanged: (value) =>
+                                addBuildingController.changeAuditorStatus(),
+                          ),
+                          Text(
+                            "Bina Sağlam",
+                            style: TextStyle(
+                              fontFamily: "pass",
+                              fontSize: 20,
+                              fontWeight: addBuildingController.isDurableCheckBoxChecked.value ? FontWeight.w600 : FontWeight.w100,
+                              color: addBuildingController.isDurableCheckBoxChecked.value ? Colors.deepPurpleAccent : Colors.black,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
               SizedBox(
-                height: 30,
+                height: 10,
               ),
               Row(
                 children: [
@@ -631,11 +653,13 @@ class AuditorInfLogin extends StatelessWidget {
                             model.kil = kilController.text;
                             model.binaAdres = binaAdresController.text;
                             model.binaIl = binaIlController.text;
+                            model.isDurable = addBuildingController.isDurableCheckBoxChecked.value;
                             final response = await imagecontroller
                                 .uploadImage(imagecontroller.imagePath.value);
                             model.imageUrl = response;
                             controller.addBuilding(model);
                             imagecontroller.imagePath.value = "";
+                            addBuildingController.isDurableCheckBoxChecked.value =false;
                             Get.to(() => HomeScreen(
                                   userModel: userModel,
                                 ));

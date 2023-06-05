@@ -57,11 +57,11 @@ class LoginForm extends StatelessWidget {
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.fingerprint_outlined,
                         color: AppColors.welcomeTextColor),
-                    labelText: "Password",
+                    labelText: "Şifre",
                     labelStyle: TextStyle(
                         fontFamily: "pass", fontSize: 16, color: Colors.black),
                     hintTextDirection: TextDirection.ltr,
-                    hintText: "Password",
+                    hintText: "Şifre",
                     hintStyle: TextStyle(
                         fontFamily: "pass", fontSize: 16, color: Colors.black),
                     focusColor: AppColors.backgroundColor,

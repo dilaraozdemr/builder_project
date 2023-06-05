@@ -12,6 +12,7 @@ class BuildingModel {
   String? insaatDemiri;
   String? celikst;
   String? imageUrl;
+  bool? isDurable;
 
   BuildingModel();
 
@@ -28,6 +29,7 @@ class BuildingModel {
       'imageUrl': imageUrl,
       'binaIl': binaIl,
       'binaAdres': binaAdres,
+      'isDurable':isDurable,
     };
   }
 
@@ -42,5 +44,6 @@ class BuildingModel {
         celikst = doc.data()!["celikst"],
         imageUrl = doc.data()!["imageUrl"],
         binaIl = doc.data()!["binaIl"],
-        binaAdres = doc.data()!["binaAdres"];
+        binaAdres = doc.data()!["binaAdres"],
+        isDurable = doc.data()!["isDurable"];
 }

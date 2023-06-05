@@ -29,8 +29,7 @@ class HomeController extends GetxController {
       "imageUrl" : model.imageUrl,
       "binaIl" : model.binaIl,
       "binaAdres": model.binaAdres,
+      "isDurable":model.isDurable,
     });
-
-
   }
 }

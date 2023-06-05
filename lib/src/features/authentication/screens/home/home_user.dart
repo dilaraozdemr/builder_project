@@ -8,6 +8,7 @@ import 'package:builder_project/src/features/authentication/models/building_mode
 import 'package:builder_project/src/features/authentication/screens/profile_screen/profile_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -23,6 +24,7 @@ class HomeUser extends StatefulWidget {
 class _HomeUserState extends State<HomeUser> {
   final controller = Get.put(HomeController());
   var query = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,42 +32,61 @@ class _HomeUserState extends State<HomeUser> {
       body: Column(
         children: [
           SizedBox(
-            height: 40,
+            height: 60,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Row(
               children: [
                 Expanded(
                   child: GestureDetector(
-                    onTap: () => Get.to(AuditorInfLogin(userModel: widget.userModel!,)),
+                    onTap: () => Get.to(AuditorInfLogin(
+                      userModel: widget.userModel!,
+                    )),
                     child: Material(
                       color: AppColors.backgroundColor,
-                      borderRadius: BorderRadius.circular(25),
+                      borderRadius: BorderRadius.circular(50),
                       child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: AppColors.welcomeTextColor,
-                            width: 2,
-                          ),
-                          borderRadius: BorderRadius.circular(25),
-                        ),
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child:
-                             TextField(
-                              onChanged: (value){
-                                setState(() {
-                                  query = value;
-                                });
-                              },
+                          padding: const EdgeInsets.all(5.0),
+                          child: TextFormField(
+                            onChanged: (value) {
+                              setState(() {
+                                query = value;
+                              });
+                            },
+                            decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.search,
+                                  color: AppColors.welcomeTextColor),
+                              labelText: "Ara",
+                              labelStyle: TextStyle(
+                                  fontFamily: "pass",
+                                  fontSize: 16,
+                                  color: Colors.black),
+                              hintTextDirection: TextDirection.ltr,
+                              hintText: "Ara",
+                              hintStyle: TextStyle(
+                                  fontFamily: "pass",
+                                  fontSize: 16,
+                                  color: Colors.black),
+                              focusColor: AppColors.backgroundColor,
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(width: 3),
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(18),
+                                ),
+                                borderSide: BorderSide(width: 3),
+                              ),
                             ),
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-                Spacer(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Material(
@@ -73,7 +94,9 @@ class _HomeUserState extends State<HomeUser> {
                     borderRadius: BorderRadius.circular(100),
                     child: InkWell(
                       borderRadius: BorderRadius.circular(100),
-                      onTap: () => Get.to(() => ProfileScreen(userModel: widget.userModel!,)),
+                      onTap: () => Get.to(() => ProfileScreen(
+                            userModel: widget.userModel!,
+                          )),
                       child: Container(
                         width: 50,
                         height: 50,
@@ -111,15 +134,18 @@ class _HomeUserState extends State<HomeUser> {
                         var docId = snapshot.data!.docs[index].reference.id;
                         var buildingModel = BuildingModel.fromDocumentSnapshot(
                             snapshot.data!.docs[index]
-                            as DocumentSnapshot<Map<String, dynamic>>);
-                        if(buildingModel.buildingName.toString().contains(query.toLowerCase())){
+                                as DocumentSnapshot<Map<String, dynamic>>);
+                        if (buildingModel.buildingName
+                            .toString()
+                            .contains(query)) {
                           return GestureDetector(
                             onTap: () {
                               Get.to(() =>
                                   BuildingDetailScreen(model: buildingModel));
                             },
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
                               child: Card(
                                 color: Color(0xffFFFAF4),
                                 shadowColor: AppColors.welcomeTextColor,
@@ -141,7 +167,8 @@ class _HomeUserState extends State<HomeUser> {
                                                 fontFamily: "pass",
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.w600,
-                                                color: AppColors.welcomeTextColor,
+                                                color:
+                                                    AppColors.welcomeTextColor,
                                               ),
                                             ),
                                           ),
@@ -152,7 +179,8 @@ class _HomeUserState extends State<HomeUser> {
                                               style: TextStyle(
                                                 fontFamily: "pass",
                                                 fontSize: 13,
-                                                color: AppColors.welcomeTextColor,
+                                                color:
+                                                    AppColors.welcomeTextColor,
                                               ),
                                             ),
                                           ),
@@ -163,7 +191,8 @@ class _HomeUserState extends State<HomeUser> {
                                               style: TextStyle(
                                                 fontFamily: "pass",
                                                 fontSize: 13,
-                                                color: AppColors.welcomeTextColor,
+                                                color:
+                                                    AppColors.welcomeTextColor,
                                               ),
                                             ),
                                           ),
@@ -185,8 +214,7 @@ class _HomeUserState extends State<HomeUser> {
                               ),
                             ),
                           );
-                        }
-                        else {
+                        } else {
                           return Container();
                         }
                       });

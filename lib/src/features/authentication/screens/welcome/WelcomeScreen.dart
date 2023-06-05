@@ -2,6 +2,7 @@ import 'package:builder_project/src/constants/AssetConstants.dart';
 import 'package:builder_project/src/constants/colors.dart';
 import 'package:builder_project/src/constants/text_strings.dart';
 import 'package:builder_project/src/features/authentication/screens/login/login_screen.dart';
+import 'package:builder_project/src/features/authentication/screens/on_boarding/on_boarding_screen.dart';
 import 'package:builder_project/src/features/authentication/screens/signup/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -105,7 +106,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Get.to(()=>SignupScreen());
+                        Get.to(()=>OnBoardingScreen());
                       },
                       child: Text(
                         "Kayıt Olun",

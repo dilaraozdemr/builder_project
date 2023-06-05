@@ -1,4 +1,3 @@
-import 'package:builder_project/src/constants/AssetConstants.dart';
 import 'package:flutter/material.dart';
 class LoginHeaderWidget extends StatelessWidget {
    LoginHeaderWidget({
@@ -24,7 +23,7 @@ class LoginHeaderWidget extends StatelessWidget {
           label,
           style: TextStyle(
             fontFamily: "pass",
-            fontSize: 20,
+            fontSize: 30,
             fontWeight: FontWeight.bold,
           ),
         ),

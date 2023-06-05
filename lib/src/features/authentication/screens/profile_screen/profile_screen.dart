@@ -16,6 +16,22 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.backgroundColor,
+        iconTheme: IconThemeData(
+          color: AppColors.welcomeTextColor,
+          size: 30,
+        ),
+        centerTitle: true,
+        title: Text(
+          "Profilim",
+          style: TextStyle(
+            color: AppColors.welcomeTextColor,
+            fontSize: 28,
+            fontFamily: "pass",
+          ),
+        ),
+      ),
       backgroundColor: AppColors.backgroundColor,
       body: SingleChildScrollView(
         child: Center(
@@ -24,16 +40,77 @@ class ProfileScreen extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  width: 220,
+                  width: 200,
                   child: Lottie.asset(
-                    AssetConstant.userLottie,
+                    AssetConstant.prfile2Lottie,
                   ),
                 ),
                 Text(
                   userModel.fullName ?? "",
                   style: TextStyle(
                     color: AppColors.welcomeTextColor,
+                    fontFamily: "pass",
+                    fontSize: 30,
                   ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: AppColors.welcomeTextColor,
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: Row(
+                    children: [
+                      Image(
+                        height: 80,
+                        width: 80,
+                        image: AssetImage(AssetConstant.emailIcon),
+                      ),
+                      Text(
+                        userModel.email ?? "",
+                        style: TextStyle(
+                          fontFamily: "pass",
+                          fontSize: 25,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: AppColors.welcomeTextColor,
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: Row(
+                    children: [
+                      Image(
+                        height: 80,
+                        width: 80,
+                        image: AssetImage(AssetConstant.phoneIcon),
+                      ),
+                      Text(
+                        userModel.phoneNo ?? "",
+                        style: TextStyle(
+                          fontFamily: "pass",
+                          fontSize: 25,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 100,
                 ),
                 Row(
                   children: [
@@ -48,8 +125,10 @@ class ProfileScreen extends StatelessWidget {
                           ),
                           child: Row(
                             children: [
-                              SizedBox(
-                                width: 30,
+                              Image(
+                                height: 80,
+                                width: 80,
+                                image: AssetImage(AssetConstant.logoutIcon),
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(15.0),
@@ -60,12 +139,6 @@ class ProfileScreen extends StatelessWidget {
                                     fontSize: 25,
                                   ),
                                 ),
-                              ),
-                              Spacer(),
-                              Image(
-                                height: 50,
-                                width: 50,
-                                image: AssetImage(AssetConstant.logoutIcon),
                               ),
                             ],
                           ),

@@ -1,4 +1,5 @@
 import 'package:builder_project/src/constants/AssetConstants.dart';
+import 'package:builder_project/src/constants/colors.dart';
 import 'package:builder_project/src/features/authentication/controllers/splash_screen_controller.dart';
 import 'package:builder_project/src/features/authentication/screens/welcome/WelcomeScreen.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +19,7 @@ class SplashScreen extends StatelessWidget {
           Positioned(
             child: Container(
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(AssetConstant.splashbackim),
-                  fit: BoxFit.cover,
-                ),
+                color: AppColors.backgroundColor,
               ),
             ),
           ),
@@ -30,11 +28,11 @@ class SplashScreen extends StatelessWidget {
               top:  250 ,
               left: splashController.animate.value ? 100 : -200,
               child: AnimatedOpacity(
-                duration: const Duration(milliseconds: 1600),
+                duration: const Duration(milliseconds: 4600),
                 opacity: splashController.animate.value ? 1 : 0,
                 child: ClipOval(
                   child: Image.asset(
-                    AssetConstant.splashicon,
+                    AssetConstant.logo,
                     width: 180,
                     height: 180,
                   ),
@@ -47,7 +45,7 @@ class SplashScreen extends StatelessWidget {
             top: 450,
             left: 110,
             child: const Text(
-              "BİNALAR",
+              "Yapı Kontrol",
               style: TextStyle(
                 color: Colors.black,
                 fontFamily: "pass",

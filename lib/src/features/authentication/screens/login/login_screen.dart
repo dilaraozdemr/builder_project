@@ -21,7 +21,7 @@ class LoginScreen extends StatelessWidget {
             padding: EdgeInsets.only(top: 10.0),
             child: Column(
               children: [
-                LoginHeaderWidget(size: size, label: "Tekrar hoş geldiniz", image: AssetConstant.signassets,),
+                LoginHeaderWidget(size: size, label: "Hoş geldiniz ", image: AssetConstant.signassets,),
                 LoginForm(),
                 SizedBox(
                   height: 20,

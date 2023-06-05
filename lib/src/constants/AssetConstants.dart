@@ -24,5 +24,12 @@ class AssetConstant{
   static const binIcon= "assets/icons/icons8-bin-96.png";
   static const provinceIcon = "assets/icons/icons8-country-96.png";
   static const userLottie= "assets/logo/111659-user-icon.json";
-  static const logoutIcon= "assets/icons/icons8-logout-96.png";
+  static const logoutIcon= "assets/icons/icons8-log-out-100.png";
+  static const emailIcon = "assets/icons/icons8-email-100.png";
+  static const phoneIcon = "assets/icons/icons8-phone-100.png";
+  static const profileLottie = "assets/logo/134181-profile-persons.json";
+  static const prfile2Lottie = "assets/logo/88222-id-card-profile-card.json";
+  static const successLottie = "assets/images/success.json";
+  static const errorLottie = "assets/images/error.json";
+  static const logo = "assets/images/Adsız tasarım.png";
 }
