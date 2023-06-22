@@ -13,29 +13,51 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../../constants/colors.dart';
 
-class AuditorInfLogin extends StatelessWidget {
+class AuditorInfLogin extends StatefulWidget {
   final UserModel userModel;
 
   AuditorInfLogin({
     Key? key,
     required this.userModel,
   }) : super(key: key);
+
+  @override
+  State<AuditorInfLogin> createState() => _AuditorInfLoginState();
+}
+
+class _AuditorInfLoginState extends State<AuditorInfLogin> {
   final buildingNameController = TextEditingController();
+
   final yasController = TextEditingController();
+
   final cimentoMarkaController = TextEditingController();
+
   final binaKatController = TextEditingController();
+
   final insaatDemiriController = TextEditingController();
+
   final kilController = TextEditingController();
+
   final celikstController = TextEditingController();
+
   final binaAdresController = TextEditingController();
+
   final binaIlController = TextEditingController();
+
   final controller = Get.put(HomeController());
+
   final imagecontroller = Get.put(ImageUploadController());
 
   var model = BuildingModel();
+
   var addBuildingController = Get.put(AddBuildingController());
+  String dropDownCimento = 'Çimento';
+  String dropDownCelik = 'Çelik';
+  String dropDownKil = 'Kil';
+  String dropDownDemir = 'Demir';
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -233,46 +255,46 @@ class AuditorInfLogin extends StatelessWidget {
                           width: 30,
                         ),
                         Expanded(
-                          child: TextFormField(
-                            controller: cimentoMarkaController,
-                            decoration: InputDecoration(
-                              prefixIcon: Padding(
-                                padding: EdgeInsets.all(10.0),
-                                child: Image(
-                                  image: AssetImage(AssetConstant.clayIcon),
-                                  height: 50,
-                                  width: 50,
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(4),
+                                border: Border.all(color:  AppColors.welcomeTextColor,)),
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.all(10.0),
+                                  child: Image(
+                                    image: AssetImage(AssetConstant.clayIcon),
+                                    height: 50,
+                                    width: 50,
+                                  ),
                                 ),
-                              ),
-                              labelText: "Çimento",
-                              labelStyle: TextStyle(
-                                  fontFamily: "pass",
-                                  fontSize: 16,
-                                  color: Colors.black),
-                              hintTextDirection: TextDirection.ltr,
-                              hintText: "Çimento",
-                              hintStyle: TextStyle(
-                                  fontFamily: "pass",
-                                  fontSize: 16,
-                                  color: Colors.black),
-                              focusColor: AppColors.backgroundColor,
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      width: 1,
-                                      color: AppColors.welcomeTextColor
-                                          .withOpacity(0.7))),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(18),
+                                DropdownButton<String>(
+                                  value: dropDownCimento,
+                                  hint: Text("Çimento",style: TextStyle(
+                                      fontFamily: "pass",
+                                      fontSize: 16,
+                                      color: Colors.black),),
+                                  // Step 3.
+                                  // Step 4.
+                                  items: <String>["Çimento",'Feza', 'Seza', 'Birlik', 'Amek']
+                                      .map<DropdownMenuItem<String>>((String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(
+                                        value,
+                                        style: TextStyle(fontSize: 15),
+                                      ),
+                                    );
+                                  }).toList(),
+                                  // Step 5.
+                                  onChanged: (String? newValue) {
+                                    setState(() {
+                                      dropDownCimento = newValue!;
+                                    });
+                                  },
                                 ),
-                                borderSide: BorderSide(width: 2),
-                              ),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(10),
-                                ),
-                                borderSide: BorderSide(width: 4),
-                              ),
+                              ],
                             ),
                           ),
                         ),
@@ -284,46 +306,46 @@ class AuditorInfLogin extends StatelessWidget {
                     Row(
                       children: [
                         Expanded(
-                          child: TextFormField(
-                            controller: celikstController,
-                            decoration: InputDecoration(
-                              prefixIcon: Padding(
-                                padding: EdgeInsets.all(3.0),
-                                child: Image(
-                                  image: AssetImage(AssetConstant.steelIcon),
-                                  height: 60,
-                                  width: 60,
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(4),
+                                border: Border.all(color:  AppColors.welcomeTextColor,)),
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.all(10.0),
+                                  child: Image(
+                                    image: AssetImage(AssetConstant.steelIcon),
+                                    height: 50,
+                                    width: 50,
+                                  ),
                                 ),
-                              ),
-                              labelText: "Çelik",
-                              labelStyle: TextStyle(
-                                  fontFamily: "pass",
-                                  fontSize: 16,
-                                  color: Colors.black),
-                              hintTextDirection: TextDirection.ltr,
-                              hintText: "Çelik",
-                              hintStyle: TextStyle(
-                                  fontFamily: "pass",
-                                  fontSize: 16,
-                                  color: Colors.black),
-                              focusColor: AppColors.backgroundColor,
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      width: 1,
-                                      color: AppColors.welcomeTextColor
-                                          .withOpacity(0.7))),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(18),
+                                DropdownButton<String>(
+                                  value: dropDownCelik,
+                                  hint: Text("Çelik",style: TextStyle(
+                                      fontFamily: "pass",
+                                      fontSize: 16,
+                                      color: Colors.black),),
+                                  // Step 3.
+                                  // Step 4.
+                                  items: <String>["Çelik",'Loto', 'Mana', 'Burnu', 'Talan']
+                                      .map<DropdownMenuItem<String>>((String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(
+                                        value,
+                                        style: TextStyle(fontSize: 15),
+                                      ),
+                                    );
+                                  }).toList(),
+                                  // Step 5.
+                                  onChanged: (String? newValue) {
+                                    setState(() {
+                                      dropDownCelik = newValue!;
+                                    });
+                                  },
                                 ),
-                                borderSide: BorderSide(width: 2),
-                              ),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(10),
-                                ),
-                                borderSide: BorderSide(width: 4),
-                              ),
+                              ],
                             ),
                           ),
                         ),
@@ -331,46 +353,46 @@ class AuditorInfLogin extends StatelessWidget {
                           width: 30,
                         ),
                         Expanded(
-                          child: TextFormField(
-                            controller: kilController,
-                            decoration: InputDecoration(
-                              prefixIcon: Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Image(
-                                  image: AssetImage(AssetConstant.brickIcon),
-                                  height: 50,
-                                  width: 50,
+                          child:Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(4),
+                                border: Border.all(color:  AppColors.welcomeTextColor,)),
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.all(10.0),
+                                  child: Image(
+                                    image: AssetImage(AssetConstant.brickIcon),
+                                    height: 50,
+                                    width: 50,
+                                  ),
                                 ),
-                              ),
-                              labelText: "Kil",
-                              labelStyle: TextStyle(
-                                  fontFamily: "pass",
-                                  fontSize: 16,
-                                  color: Colors.black),
-                              hintTextDirection: TextDirection.ltr,
-                              hintText: "Kil",
-                              hintStyle: TextStyle(
-                                  fontFamily: "pass",
-                                  fontSize: 16,
-                                  color: Colors.black),
-                              focusColor: AppColors.backgroundColor,
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      width: 1,
-                                      color: AppColors.welcomeTextColor
-                                          .withOpacity(0.7))),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(18),
+                                DropdownButton<String>(
+                                  value: dropDownKil,
+                                  hint: Text("Kil",style: TextStyle(
+                                      fontFamily: "pass",
+                                      fontSize: 16,
+                                      color: Colors.black),),
+                                  // Step 3.
+                                  // Step 4.
+                                  items: <String>["Kil",'Fani', 'Utah', 'Duran', 'A140']
+                                      .map<DropdownMenuItem<String>>((String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(
+                                        value,
+                                        style: TextStyle(fontSize: 15),
+                                      ),
+                                    );
+                                  }).toList(),
+                                  // Step 5.
+                                  onChanged: (String? newValue) {
+                                    setState(() {
+                                      dropDownKil = newValue!;
+                                    });
+                                  },
                                 ),
-                                borderSide: BorderSide(width: 2),
-                              ),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(10),
-                                ),
-                                borderSide: BorderSide(width: 4),
-                              ),
+                              ],
                             ),
                           ),
                         ),
@@ -382,42 +404,48 @@ class AuditorInfLogin extends StatelessWidget {
                     Row(
                       children: [
                         Expanded(
-                          child: TextFormField(
-                            controller: insaatDemiriController,
-                            decoration: InputDecoration(
-                              prefixIcon: Image(
-                                  image: AssetImage(AssetConstant.rebarIcon)),
-                              labelText: "İnşaat Demiri",
-                              labelStyle: TextStyle(
-                                  fontFamily: "pass",
-                                  fontSize: 16,
-                                  color: Colors.black),
-                              hintTextDirection: TextDirection.ltr,
-                              hintText: "İnşaat Demiri",
-                              hintStyle: TextStyle(
-                                  fontFamily: "pass",
-                                  fontSize: 16,
-                                  color: Colors.black),
-                              focusColor: AppColors.backgroundColor,
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      width: 1,
-                                      color: AppColors.welcomeTextColor
-                                          .withOpacity(0.7))),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(18),
+                          child:Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(4),
+                                border: Border.all(color:  AppColors.welcomeTextColor,)),
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.all(10.0),
+                                  child: Image(
+                                    image: AssetImage(AssetConstant.rebarIcon),
+                                    height: 50,
+                                    width: 50,
+                                  ),
                                 ),
-                                borderSide: BorderSide(width: 2),
-                              ),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(10),
+                                Expanded(
+                                  child: DropdownButton<String>(
+                                    value: dropDownDemir,
+                                    hint: Text("İnşaat Demiri",style: TextStyle(
+                                        fontFamily: "pass",
+                                        fontSize: 16,
+                                        color: Colors.black),),
+                                    // Step 3.
+                                    // Step 4.
+                                    items: <String>["Demir",'XC110', 'T125', 'B130', 'M60']
+                                        .map<DropdownMenuItem<String>>((String value) {
+                                      return DropdownMenuItem<String>(
+                                        value: value,
+                                        child: Text(
+                                          value,
+                                          style: TextStyle(fontSize: 15),
+                                        ),
+                                      );
+                                    }).toList(),
+                                    // Step 5.
+                                    onChanged: (String? newValue) {
+                                      setState(() {
+                                        dropDownDemir = newValue!;
+                                      });
+                                    },
+                                  ),
                                 ),
-                                borderSide: BorderSide(
-                                  width: 4,
-                                ),
-                              ),
+                              ],
                             ),
                           ),
                         ),
@@ -643,14 +671,14 @@ class AuditorInfLogin extends StatelessWidget {
                         ),
                         child: InkWell(
                           onTap: () async {
-                            model.userId = userModel.id ?? "";
+                            model.userId = widget.userModel.id ?? "";
                             model.buildingName = buildingNameController.text;
                             model.yas = int.parse(yasController.text);
-                            model.cimentoMarka = cimentoMarkaController.text;
-                            model.celikst = celikstController.text;
+                            model.cimentoMarka = dropDownCimento;
+                            model.celikst = dropDownCelik;
                             model.binaKat = int.parse(binaKatController.text);
-                            model.insaatDemiri = insaatDemiriController.text;
-                            model.kil = kilController.text;
+                            model.insaatDemiri = dropDownDemir;
+                            model.kil = dropDownKil;
                             model.binaAdres = binaAdresController.text;
                             model.binaIl = binaIlController.text;
                             model.isDurable = addBuildingController.isDurableCheckBoxChecked.value;
@@ -661,7 +689,7 @@ class AuditorInfLogin extends StatelessWidget {
                             imagecontroller.imagePath.value = "";
                             addBuildingController.isDurableCheckBoxChecked.value =false;
                             Get.to(() => HomeScreen(
-                                  userModel: userModel,
+                                  userModel: widget.userModel,
                                 ));
                           },
                           child: Container(
