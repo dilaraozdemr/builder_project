@@ -1,16 +1,14 @@
-# builder_project
+<h1 align="center">Hi 👋, I'm Dilara Özdemir</h1>
+<h3 align="center">Entry level Mobile Application Developer and Junior Product Manager from Turkey</h3>
 
-A new Flutter project.
+- 💬 Ask me about **Flutter,Jira,Project Management**
 
-## Getting Started
+- 📫 How to reach me **dilaraozdmr66@gmail.com**
 
-This project is a starting point for a Flutter application.
+<p align="left">
+</p>
 
-A few resources to get you started if this is your first Flutter project:
+<h3 align="left">Languages and Tools:</h3>
+<p align="left"> <a href="https://www.w3schools.com/cs/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg" alt="csharp" width="40" height="40"/> </a> <a href="https://dart.dev" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/dartlang/dartlang-icon.svg" alt="dart" width="40" height="40"/> </a> <a href="https://www.figma.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="40" height="40"/> </a> <a href="https://flutter.dev" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/flutterio/flutterio-icon.svg" alt="flutter" width="40" height="40"/> </a> <a href="https://postman.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="postman" width="40" height="40"/> </a> </p>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<p><img align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=dilaraozdemr&show_icons=true&locale=en&layout=compact" alt="dilaraozdemr" /></p>
